@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #1d1f1d;
+  color: white;
+  font-family: "Poppins", sans-serif;
+
+}
+body::-webkit-scrollbar {
+		width: 0;
+}
+
+header a {
+  text-decoration: none;
+}
+
+header {
+  padding: 0 20px;
+  background-color: #1d1f1d;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#brand {
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+#brand a {
+  color: #09c372;
+}
+
+ul {
+  list-style: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+ul a {
+  color: white;
+}
+
+ul li {
+  padding: 5px;
+  margin-left: 10px;
+}
+
+ul li:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+#login,
+#signup {
+  border-radius: 20px;
+  padding: 5px 8px;
+}
+
+#signup {
+  border: 1px solid #498afb;
+}
+
+#signup a {
+  color: #498afb;
+}
+
+
+#hamburger-icon {
+  margin: auto 0;
+  display: none;
+  cursor: pointer;
+}
+
+#hamburger-icon div {
+  width: 35px;
+  height: 3px;
+  background-color: white;
+  margin: 6px 0;
+  transition: 0.4s;
+}
+
+.open .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-6px, 6px);
+  transform: rotate(-45deg) translate(-6px, 6px);
+}
+
+.open .bar2 {
+  opacity: 0;
+}
+
+.open .bar3 {
+  -webkit-transform: rotate(45deg) translate(-6px, -8px);
+  transform: rotate(45deg) translate(-6px, -8px);
+}
+
+.open .mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  height: calc(40vh - 50px);
+  width: 100%;
+  background: rgba( 255, 255, 255, 0.1 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 12px );
+    -webkit-backdrop-filter: blur( 12px );
+    border-radius: 0px 0px 10px 10px;
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+  animation-name: fade-down;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.mobile-menu li {
+  margin-bottom: 10px;
+}
+.logbot{
+    height: 50px;
+    width: 300px;  
+    color:white;
+    margin-top: 50px;
+    background-color:transparent;
+    border-color: white;
+    border-radius: 50px;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;  
+    transition: background-color 0.1s ease, color 0.1s ease;
+    transition-delay: 0.1s;
+}
+.logbot:hover{
+   background-color: #09c372;
+   color: black;
+   border-color:transparent;
+   transform: scale(1.1);
+   transition: 0.3s;
+}
+.space {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.space-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.space-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.title{
+    margin-left: 100px;
+    padding-top: 150px;
+}
+.homelogo {
+    display: flex;
+}
+
+.homelogo img {
+    height: 400px;
+    width: auto;
+    margin-left: 100px;
+}
+/* Centering the .login-form div */
+.login-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* The rest of the CSS properties */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 400px;
+  }
+  
+  /* Making the form responsive */
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .form h2 {
+    color: #3d3d3d;
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .form input {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    font-size: 16px;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .form .loginbot {
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #09c372;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .form .loginbot:hover {
+    color: white;
+  }
+  
+
+@media only screen and (max-width: 600px) {
+  header nav {
+    display: none;
+  }
+  ul li:hover {
+    transform: scale(1.1);
+    transition: 0.3s;
+    color:black;
+  }
+
+  #hamburger-icon {
+    display: block;
+  }
+  .login-form{
+    margin-top: 160px;
+  } 
+}
