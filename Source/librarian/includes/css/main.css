@@ -113,9 +113,10 @@ ul li:hover {
 .mobile-menu {
   display: none;
   position: absolute;
-  top: 80px;
+  top: 60px;
   left: 0;
-  height: calc(40vh - 50px);
+  z-index: 100;
+  height: calc(100vh - 50px);
   width: 100%;
   background: rgba( 255, 255, 255, 0.1 );
     box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
@@ -204,7 +205,7 @@ ul li:hover {
     transform: translate(-50%, -50%);
     /* The rest of the CSS properties */
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
     border-radius: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     width: 90%;
@@ -233,7 +234,7 @@ ul li:hover {
     border: 1px solid #999;
     font-size: 16px;
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
   }
   
   .form .loginbot {
@@ -246,12 +247,26 @@ ul li:hover {
     cursor: pointer;
     background-color: #09c372;
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
   }
   
   .form .loginbot:hover {
     color: white;
   }
+  .alert-box {
+    display: none;
+    width: 100%;
+    max-width: 400px;
+    border-radius: 12px;
+    background-color: #f44336;
+    color: #fff;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+
+    .show {
+        display: block;
+    }
   
 
 @media only screen and (max-width: 600px) {

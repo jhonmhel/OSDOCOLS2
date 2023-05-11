@@ -10,6 +10,7 @@
 ?>
  <link rel="shortcut icon" href="includes/images/libraryhub.png" type="image/x-icon">
 <link rel="stylesheet" href="includes/css/sidebar.css">
+<link rel="stylesheet" href="includes/css/content.css">
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/dataTables.bootstrap5.min.css">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
@@ -20,6 +21,7 @@
 <style>
 
 </style>
+
 <!DOCTYPE html>
 <!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
 <html lang="en" dir="ltr">
@@ -79,12 +81,17 @@
         </ul>
       </li>
       <li>
-        <a href="admin_book_management.php">
-          <i class='bx bx-book-open' ></i>
-          <span class="link_name <?php if($page=='bookin'){ echo 'active';} ?>">Book Inventory</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name <?php if($page=='bookin'){ echo 'active';} ?>" href="admin_book_management.php">Book Inventory</a></li>
+        <div class="iocn-link">
+          <a href="">
+            <i class='bx bx-book' ></i>
+            <span class="link_name">Book Management</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Book Management</a></li>
+          <li><a href="admin_book_management.php" >Book Inventory</a></li>
+          <li><a href="#">Add Book(s)</a></li>
         </ul>
       </li>
       <li>
@@ -97,7 +104,8 @@
         </div>
         <ul class="sub-menu">
           <li><a class="link_name" href="#">Accounts</a></li>
-          <li><a href="#">Add Accounts</a></li>
+          <li><a href="admin_add_accounts.php">Add Account(s)</a></li>
+          <li><a href="">Add School(s)</a></li>
           <li><a href="#">List of All Accounts</a></li>
         </ul>
       </li>
@@ -113,15 +121,6 @@
           <li><a class="link_name" href="#">Reports</a></li>
           <li><a href="#">List of Reports</a></li>
           <li><a href="#">List of All Reports</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">
-          <i class='bx bx-bell' ></i>
-          <span class="link_name">Notification</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="#">Notification</a></li>
         </ul>
       </li>
       <li>
@@ -143,67 +142,60 @@
         </ul>
       </li>
       <li>
-        <a href="logout.php">
-          <i class='bx bx-log-out' ></i>
-          <span class="link_name">Log out</span>
-        </a>
-        <ul class="sub-menu blank">
-          <li><a class="link_name" href="logout.php">Log out</a></li>
-        </ul>
-      </li>
-      <li>
   </li>
 </ul>
   </div>
   <header class="home-section">
     <div class="home-content">
-      <i class='bx bx-menu' ></i>
-      <div class="header-profile">
-            <ul>  
-                <!-- <li class="icon">
-                  <a href="notifadmin.php" ><i class="notif bx bx-bell"></i></a>
+        <div class="hamburger-icon">
+            <i class='bx bx-menu'></i>
+        </div>
+        <div class="header-profile">
+              <div class=""> <a href="message.php"><i class="mess bx bx-chat"></i></a></div>
+              <div class="notif-icon">
+                  <a href="notifadmin.php"><i class="notif bx bx-bell"></i></a>
                   <span class="count" onclick="window.location='notifadmin.php'"><b><?php echo $not; ?></b></span>
-                </li> -->
-              <li class="dropdown">
-                        <?php
-                          $res = mysqli_query($link, "select photo from user where user_id='".$_SESSION['user_id']."'");
-                          if ($row = mysqli_fetch_array($res)) {
+                  <div class="dropdown">
+                      <?php
+                        $res = mysqli_query($link, "select photo from user where user_id='".$_SESSION['user_id']."'");
+                        if ($row = mysqli_fetch_array($res)) {
                         ?>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                           <img src="<?php echo $row['photo']; ?>" alt="User Photo">
                           <span>Admin</span>
                         </a>
                         <?php
-                          }
+                        }
                         ?>
-                  <ul class="dropdown-menu">
-                      <li class="user-header text-center">
-                        <?php
-                          $stmt = mysqli_prepare($link, "SELECT photo FROM user WHERE user_id = ?");
-                          mysqli_stmt_bind_param($stmt, "s", $_SESSION['user_id']);
+                        <ul class="dropdown-menu">
+                          <li class="user-header text-center">
+                            <?php
+                            $stmt = mysqli_prepare($link, "SELECT photo FROM user WHERE user_id = ?");
+                            mysqli_stmt_bind_param($stmt, "s", $_SESSION['user_id']);
                 
-                              if (mysqli_stmt_execute($stmt)) {
-        
-                              mysqli_stmt_bind_result($stmt, $photo);
-    
+                            if (mysqli_stmt_execute($stmt)) {
+                                mysqli_stmt_bind_result($stmt, $photo);
+                
                               if (mysqli_stmt_fetch($stmt)) {
                                 echo '<img src="' . $photo . '" alt="">';
-                              }
-                              } else {
-                              echo 'Error: ' . mysqli_error($link);
-                              }
-                          mysqli_stmt_close($stmt);
-                          echo '<p>' . $_SESSION["user_id"] . '</p>';
-                        ?>
-                      </li>
-                        <li class="user-footer">
-                         <button class="btnlog">Log Out</button>
-                        </li>														
-                  </ul>
-              </li>
-            </ul>
-    </div>
-  </header>
+                                }
+                            } else {
+                            echo 'Error: ' . mysqli_error($link);
+                                  }
+                                  mysqli_stmt_close($stmt);
+                                  echo '<p>' . $_SESSION["user_id"] . '</p>';
+                            ?>
+                          </li>
+                          <li class="user-footer">
+                            <button class="btnlog"><a href="logout.php">Log Out</a></button>
+                          </li>
+                        </ul>
+                  </div>
+              </div>
+          </div>
+  </div>
+</header>
+
   <script>
 		let arrow = document.querySelectorAll(".arrow");
 		for (var i = 0; i < arrow.length; i++) {

@@ -13,15 +13,13 @@
     
  ?>
  <style>
-
+    
     table{
+        font-family: 'Poppins', sans-serif;
         background-color: aliceblue;
         border-radius: 20px;
         font-family: 'Poppins', sans-serif;
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    .ontop{
-        height: 70px;
     }
  </style>
   <section class="content">  

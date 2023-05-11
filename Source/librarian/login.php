@@ -11,9 +11,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="includes/css/main.css">
     <title>OSDOCOLS</title>
-    <!-- <style>
 
-    </style> -->
   </head>
   <body>
     <header>
@@ -41,8 +39,9 @@
     </header>
     <div>
     <div class="login-form">
-            <form class="form col-12 p-2" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+            <form class="form col-12 p-2" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" onsubmit="return validate()">
                 <h2>Log In</h2>
+                <div id="alert-box" class="alert-box bx bx-bug"></div>
                 <input type="text" class=""id="username" name="user_id" placeholder="User ID" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 <input type="submit" class="loginbot" value="LOG IN AN ACCOUNT" name="login">
@@ -57,12 +56,12 @@
             $count = mysqli_num_rows($res);
             if ($count == 0) {
                 // display an error message
-                echo "Invalid username or password";
+                echo "<script>document.getElementById('alert-box').innerHTML = 'Invalid username or password'; document.getElementById('alert-box').classList.add('show');</script>";
             } else {
                 $user = mysqli_fetch_assoc($res);
                 if ($user["statuss"] == "INACTIVE") {
                     // display a message saying that the user is inactive
-                    echo "Sorry, your account is currently inactive";
+                    echo "<script>document.getElementById('alert-box').innerHTML = 'Sorry, your account is currently inactive'; document.getElementById('alert-box').classList.add('show');</script>";
                 } else {
                     $_SESSION["user_id"] = $user["user_id"];
                     if ($user["roles"] == "Admin") {
@@ -81,6 +80,17 @@
         function toggleMobileMenu(menu) {
             menu.classList.toggle('open');
         }
+        function validate() {
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+        var alertBox = document.getElementById("alert-box");
+        if (username.trim() === "" || password.trim() === "") {
+            alertBox.innerHTML = "Please enter your User ID and Password.";
+            alertBox.classList.add("show");
+            return false;
+        }
+        return true;
+    }
     </script>
   </body>
 </html>
